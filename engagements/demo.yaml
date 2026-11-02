@@ -1,0 +1,20 @@
+id: demo-local-001
+client: RedForge offline demonstration
+operator: Demo operator
+targets:
+  - 127.0.0.1
+exclusions: []
+ports: [80, 443]
+protocols: [tcp, http, https]
+window_start: 2026-01-01T00:00:00+00:00
+window_end: 2027-01-01T00:00:00+00:00
+max_request_rate: 2
+max_requests: 100
+max_concurrency: 1
+request_timeout: 10
+authorization:
+  acknowledged: false
+  approved_profiles: []
+  scanner_permissions: {}
+scanners: [nmap, nuclei, semgrep, trivy]
+source_path: .

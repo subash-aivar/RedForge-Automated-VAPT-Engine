@@ -1,0 +1,1 @@
+{"results":[{"check_id":"demo.python.subprocess","path":"fixtures/sample.py","start":{"line":1},"extra":{"severity":"WARNING","message":"Synthetic source rule match for offline demonstration.","lines":"subprocess.run(user_input, shell=True)","metadata":{"references":[],"fix":"Use a fixed argument vector and shell=False."}}}]}

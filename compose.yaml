@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: redforge
+      POSTGRES_USER: redforge
+      POSTGRES_PASSWORD: ${REDFORGE_POSTGRES_PASSWORD:?Set REDFORGE_POSTGRES_PASSWORD}
+    volumes:
+      - redforge_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U redforge"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    environment:
+      REDFORGE_DATABASE_URL: postgresql+psycopg://redforge:${REDFORGE_POSTGRES_PASSWORD}@db:5432/redforge
+      REDFORGE_API_TOKENS: ${REDFORGE_API_TOKENS:?Set REDFORGE_API_TOKENS}
+      REDFORGE_ARTIFACT_DIR: /data/artifacts
+    volumes:
+      - redforge_data:/data
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 1g
+    cpus: 1.0
+    ports:
+      - "127.0.0.1:8000:8000"
+volumes:
+  redforge_db:
+  redforge_data:

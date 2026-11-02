@@ -1,0 +1,1 @@
+{"Results":[{"Target":"demo-package","Vulnerabilities":[{"VulnerabilityID":"DEMO-TRIVY-001","PkgName":"demo-lib","InstalledVersion":"0.1","FixedVersion":"0.2","Severity":"HIGH","Description":"Synthetic fixture vulnerability; no real package was assessed."}]}]}

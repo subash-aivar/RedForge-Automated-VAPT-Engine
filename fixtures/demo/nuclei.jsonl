@@ -1,0 +1,1 @@
+{"template-id":"demo-header","host":"http://127.0.0.1","matched-at":"http://127.0.0.1/","info":{"name":"Missing demo security header","severity":"low","description":"Synthetic fixture finding; no live request was made.","reference":["https://owasp.org/www-project-secure-headers/"],"remediation":"Add the appropriate response header."},"matcher-name":"header-absent"}
